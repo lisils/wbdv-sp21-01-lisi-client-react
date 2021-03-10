@@ -1,0 +1,269 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 200;
+}
+
+/*Top navbar*/
+.navbar {
+    background-color: white;
+    box-shadow: 0 1px 0 0 #e0e0e0;
+    font-weight: 500;
+}
+
+/*Navbar edit icon*/
+.fa-edit {
+    font-weight: 200;
+}
+
+.navbar-brand {
+    font-weight: 300;
+    color: #696969;
+}
+
+.navbar-brand:hover {
+    color: #606060;
+}
+
+.wbdv-nav-items {
+    font-size: 15px;
+    font-weight: 400;
+}
+
+/*Nav bar item*/
+.wbdv-nav-item a:not(.active):visited {
+    color: grey;
+}
+
+.wbdv-nav-item a:not(.active):link {
+    color: grey;
+}
+
+/*Nav bar item on hover*/
+.wbdv-nav-item a:not(.active):hover {
+    color: #FF4D4D;
+}
+
+/*Active visited nav bar item*/
+.wbdv-nav-item a:visited {
+    text-decoration: none;
+    color: #FF4D4D;
+}
+
+.wbdv-nav-item a:link {
+    text-decoration: none;
+    color: #FF4D4D;
+}
+
+/*Toggler icon on nav bar*/
+.navbar-toggler-icon {
+    padding-top: 5px;
+    color: grey;
+}
+
+/*Left sidebar wrapper*/
+.wbdv-sidebar-wrapper {
+    padding-right: 0;
+    min-height: 100vh;
+    font-size: 15px;
+    border: 1px solid #e0e0e0;
+}
+
+.wbdv-sidebar-wrapper {
+    padding-left: 0;
+}
+
+.wbdv-sidebar-item .navlink, .active {
+    width: 100%;
+    background-color: #f3f3f3;
+}
+
+.wbdv-sidebar-item .nav-link {
+    padding: 13px 30px
+}
+
+.wbdv-editor-nav .nav-link {
+    display: inline-block;
+}
+
+.wbdv-sidebar-item a:link {
+    text-decoration: none;
+    color: black;
+}
+
+/*Inactive module item*/
+.wbdv-sidebar-item a:not(.active):visited {
+    text-decoration: none;
+    color: #4f4f4f;
+}
+
+/*Inactive module item*/
+.wbdv-sidebar-item a:not(.active):link {
+    text-decoration: none;
+    color: #4f4f4f;
+}
+
+/*Active visited sidebar item*/
+.wbdv-sidebar-item a:visited {
+    text-decoration: none;
+    color: #FF4D4D;
+}
+
+/*Hover on inactive sidebar item*/
+.wbdv-sidebar-item a:not(.active):hover {
+    color: #FF4D4D;
+}
+
+/*Hover on active sidebar item*/
+.wbdv-sidebar-item a:hover {
+    color: #FF4D4D;
+}
+
+/*All topic pills*/
+.nav-pills .nav-link {
+    border-radius: 10px;
+}
+
+
+/*Active sidebar item*/
+.wbdv-sidebar-item.active {
+    background-color: #f3f3f3;
+}
+
+/*Inactive topics*/
+.nav-pills .nav-link:not(.active) a{
+    background-color: white;
+    color: #4f4f4f;
+    text-decoration: none;
+}
+
+
+/*Active topic*/
+.wbdv-editor-topics .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: #fff;
+    background-color: #FF4D4D;
+}
+
+.wbdv-editor-topics .nav-pills .nav-link .active {
+    color: #fff;
+    background-color: #FF4D4D;
+}
+
+.wbdv-editor-topics .nav-pills .nav-link {
+
+}
+
+/*Close buttons*/
+.wbdv-btn-close {
+    padding-right: 0;
+    cursor: pointer;
+}
+
+.wbdv-add-topic {
+    font-weight: 200;
+}
+
+.wbdv-module-delete-icon {
+    margin: 10px 0 10px 3px;
+}
+
+.wbdv-module-nav {
+    padding: 24px 0;
+}
+
+/*Add button wrapper in the sidebar*/
+.wbdv-module-add-div {
+    padding: 8px 32px;
+    display: grid;
+}
+
+/*Add button in the sidebar*/
+.wbdv-module-add-btn {
+    color: grey;
+    border-color: grey;
+}
+
+/*Custom style for buttons on hover*/
+.wbdv-button-on-hover:hover {
+    background-color: #FFD3D3;
+    color: #FF4D4D;
+    border-color: #FFD3D3;
+}
+
+.wbdv-module-add-icon {
+}
+
+.wbdv-sidebar {
+    padding: 0;
+}
+
+/*Editor wrapper*/
+.wbdv-editor-wrapper {
+}
+
+.wbdv-grey-color {
+    color: grey;
+}
+
+.wbdv-editor-nav .nav-tabs a{
+    color: #4f4f4f;
+    text-decoration: none;
+    background-color: white;
+}
+
+.wbdv-editor-nav .nav-tabs .active a{
+    color: #4f4f4f;
+}
+
+.wbdv-editor-nav .nav-tabs a{
+    color: #FF4D4D;
+}
+
+.wbdv-editor-nav .nav-tabs {
+    color: #FF4D4D;
+}
+
+/*Main content of the editor*/
+.wbdv-editor-main {
+    padding: 0 25px;
+}
+
+.wbdv-nav-group {
+    margin-left: auto
+}
+
+.wbdv-editor-lessons {
+    padding-top: 25px;
+    padding-bottom: 10px;
+
+}
+
+
+.wbdv-label {
+    display: inline-block;
+}
+
+.fa-edit {
+    margin-left: 10px;
+    margin-top: 3px;
+}
+
+.fas:hover {
+    cursor: pointer;
+}
+
+.form-control {
+    width: 70%;
+    font-size: 13px;
+    line-height: 1.5;
+    display: inline-block;
+    padding: 5px;
+}
+
+.fa-check {
+    margin: 10px 5px;
+    white-space: nowrap;
+}
+
+.wbdv-sidebar-item .nav-link {
+    width: 100%;
+}

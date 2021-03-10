@@ -1,16 +1,18 @@
 import React from 'react';
 import CourseTable from "./course-table";
 import CourseGrid from "./course-grid";
+import CourseEditor from "./course-editor";
 import {Link, Route} from "react-router-dom";
-import courseService, {findAllCourses, deleteCourse, updateCourse} from "../services/course-service";
+import courseService, {updateCourse} from "../services/course-service";
+import './course-manager-style.css';
 
 class CourseManager extends React.Component {
     state = {
         courses: [],
         newCourse: {
-        title: "",
-        owner: "me",
-        lastModified:"6:45 PM"
+            title: "",
+            owner: "me",
+            lastModified:"6:45 PM"
         }
     }
 
@@ -28,21 +30,13 @@ class CourseManager extends React.Component {
         courseService.updateCourse(course._id, course)
             .then(status => this.setState((prevState) => ({
                 ...prevState,
-                courses: prevState.courses.map(c => {
-                    if(c._id === course._id) {
-                        return course
-                    } else {
-                        return c
-                    }
-                })
+                courses: prevState.courses.map(c => c._id === course._id ? course : c)
             })))
     }
 
-    componentDidMount = () => {
+    componentDidMount = () =>
         courseService.findAllCourses()
             .then(courses => this.setState({courses}))
-    }
-
 
     addCourse = (event) => {
         let courseToAdd = this.state.newCourse
@@ -57,26 +51,27 @@ class CourseManager extends React.Component {
         courseService.createCourse(courseToAdd)
             .then(course => this.setState(
                 (prevState) => ({
-                ...prevState,
-                courses: [
-                    ...prevState.courses,
-                    course
-                ]
-            })))
+                    ...prevState,
+                    courses: [
+                        ...prevState.courses,
+                        course
+                    ]
+                })))
         this.setState({newCourse: {title: "", owner: "me",
                 lastModified:new Date().toLocaleDateString()}})
         event.preventDefault()
     }
 
     deleteCourse = (courseToDelete) => {
+
         courseService.deleteCourse(courseToDelete._id)
             .then(status => {
                 this.setState((prevState)=>{
                     let nextState = {}
                     nextState.courses =
                         prevState.
-                            courses
-                                .filter(course => course !== courseToDelete)
+                        courses
+                            .filter(course => course !== courseToDelete)
                     return nextState
                 })
             })
@@ -100,7 +95,7 @@ class CourseManager extends React.Component {
                     </div>
 
                     <div className="col-md-6">
-                        <input className="font-italic font-weight-bold text-white"
+                        <input className=" homepage-input font-italic font-weight-bold text-white"
                                type="text"
                                size="60"
                                placeholder="New Course Title"
@@ -111,41 +106,32 @@ class CourseManager extends React.Component {
                     </div>
                     <div className="col-md-3">
                         <a href="#">
-                        <i onClick={this.addCourse}
-                           className="fas fa-plus-circle fa-3x col-md-auto"
-                           style={{color: 'red'}}>
-                        </i>
+                            <i onClick={this.addCourse}
+                               className="fas fa-plus-circle fa-3x col-md-auto"
+                               style={{color: 'red'}}>
+                            </i>
                         </a>
-
                     </div>
-
                 </nav>
 
                 </body>
 
-                <Route path="/courses/table">
+                <Route path="/courses/table" exact={true}>
                     <CourseTable
                         updateCourse={this.updateCourse}
                         deleteCourse={this.deleteCourse}
                         courses={this.state.courses}/>
                 </Route>
 
-                <Route path="/courses/grid">
-                <CourseGrid
-                    deleteCourse={this.deleteCourse}
-                    updateCourse={this.updateCourse}
-                    courses={this.state.courses}/>
+                <Route path="/courses/grid" exact={true}>
+                    <CourseGrid
+                        deleteCourse={this.deleteCourse}
+                        updateCourse={this.updateCourse}
+                        courses={this.state.courses}/>
                 </Route>
-
-                <a href="#">
-                    <i onClick={this.addCourse}
-                        className="fas fa-plus-circle fa-4x float-right"
-                        style={{color: 'red'}}/>
-                </a>
             </div>
         )
     }
 }
 
-
-export  default CourseManager
+export default CourseManager
