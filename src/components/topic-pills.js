@@ -7,7 +7,8 @@ import lessonService from "../services/lesson-service";
 
 const TopicPills = (
     {
-        topics=[],
+        topics=[
+        ],
         findTopicsForLesson,
         createTopic,
         updateTopic,
@@ -48,7 +49,7 @@ const TopicPills = (
                     )
                 }
                 <li>
-                    <i onClick={() => createTopic(lessonId)} className="fas fa-plus"/>
+                    <i onClick={() => createTopic(lessonId)} className="fas fa-plus"></i>
                 </li>
             </ul>
         </div>)}
