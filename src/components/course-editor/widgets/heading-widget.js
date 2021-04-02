@@ -15,6 +15,8 @@ const HeadingWidget = ({widget, updateWidget, deleteWidget}) => {
                             className="form-control">
                         <option value={"HEADING"}>HEADING</option>
                         <option value={"PARAGRAPH"}>PARAGRAPH</option>
+                        <option value={"LIST"}>LIST</option>
+                        <option value={"IMAGE"}>IMAGE</option>
                     </select>
                     <br/>
 
