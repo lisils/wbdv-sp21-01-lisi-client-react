@@ -1,26 +1,28 @@
 import React, {useState, useEffect} from 'react';
 
-const MultipleChoiceQuestion = ({question}) => {
+const MultipleChoiceQuestion = ({question, isGraded, setQuestionsWithAns}) => {
     const [yourAnswer, setYourAnswer] = useState('');
     const [grade, setGrade] = useState(false);
+    const [answer, setAnswer] = useState([]);
 
     return (
         <div>
             <h5>
-                {grade &&
-                <>
-                    {question.question}
-                    {
-                        question.correct === yourAnswer &&
-                        <i className="fas fa-check float-right" style={{color: '#5cb85c'}}/>
-                    }
-                    {
-                        question.correct !== yourAnswer &&
-                        <i className="fas fa-times float-right" style={{color: '#d9534f'}}/>
-                    }
-                </>
+                {
+                    isGraded &&
+                    <>
+                        {question.question}
+                        {
+                            question.correct === answer &&
+                            <i className="fas fa-check float-right" style={{color: '#5cb85c'}}/>
+                        }
+                        {
+                            question.correct !== answer &&
+                            <i className="fas fa-times float-right" style={{color: '#d9534f'}}/>
+                        }
+                    </>
                 }
-                {!grade &&
+                {!isGraded &&
                 <>
                     {question.question}
                 </>
@@ -29,67 +31,25 @@ const MultipleChoiceQuestion = ({question}) => {
 
             <ul className="list-group">
                 {
-                    grade &&
+                    isGraded &&
                     question.choices.map((choice) => {
                         return (
                             <>
-                                {yourAnswer === question.correct && yourAnswer === choice &&
-                                    <li className='list-group-item list-group-item-success'>
-                                        <lable>
-                                            <input type='radio'
-                                                   className=''
-                                                   name={question._id}
-                                                   checked
-                                                   disabled
-                                            />
-                                            {choice}
-                                            <i className="fas fa-check float-right" style={{color: '#5cb85c'}}/>
-                                        </lable>
-                                    </li>
+                                {answer === question.correct && answer === choice &&
+                                <li className='list-group-item list-group-item-success'>
+                                    <lable>
+                                        <input type='radio'
+                                               className=''
+                                               name={question._id}
+                                               checked
+                                               disabled
+                                        />
+                                        {choice}
+                                        <i className="fas fa-check float-right" style={{color: '#5cb85c'}}/>
+                                    </lable>
+                                </li>
                                 }
-                                {yourAnswer === question.correct && yourAnswer !== choice &&
-                                    <li className='list-group-item'>
-                                        <lable>
-                                            <input type='radio'
-                                                   className=''
-                                                   name={question._id}
-                                                   disabled
-                                            />
-                                            {choice}
-                                        </lable>
-                                    </li>
-                                }
-                                {yourAnswer !== question.correct && yourAnswer === choice
-                                && choice !== question.correct &&
-                                    <li className='list-group-item list-group-item-danger'>
-                                        <lable>
-                                            <input type='radio'
-                                                   className=''
-                                                   name={question._id}
-                                                   checked
-                                                   disabled
-                                            />
-                                            {choice}
-                                            <i className="fas fa-times float-right" style={{color: '#d9534f'}}/>
-                                        </lable>
-                                    </li>
-                                }
-                                {yourAnswer !== question.correct && yourAnswer !== choice
-                                    && choice === question.correct &&
-                                    <li className='list-group-item list-group-item-success'>
-                                        <lable>
-                                            <input type='radio'
-                                                   className=''
-                                                   name={question._id}
-                                                   disabled
-                                            />
-                                            {choice}
-                                            <i className="fas fa-check float-right" style={{color: '#5cb85c'}}/>
-                                        </lable>
-                                    </li>
-                                }
-                                {yourAnswer !== question.correct && yourAnswer !== choice
-                                && choice !== question.correct &&
+                                {answer === question.correct && answer !== choice &&
                                 <li className='list-group-item'>
                                     <lable>
                                         <input type='radio'
@@ -101,20 +61,75 @@ const MultipleChoiceQuestion = ({question}) => {
                                     </lable>
                                 </li>
                                 }
+                                {answer !== question.correct && answer === choice
+                                && choice !== question.correct &&
+                                <li className='list-group-item list-group-item-danger'>
+                                    <lable>
+                                        <input type='radio'
+                                               className=''
+                                               name={question._id}
+                                               checked
+                                               disabled
+
+                                        />
+                                        {choice}
+                                        <i className="fas fa-times float-right" style={{color: '#d9534f'}}/>
+                                    </lable>
+                                </li>
+                                }
+                                {answer !== question.correct && answer !== choice
+                                && choice === question.correct &&
+                                <li className='list-group-item list-group-item-success'>
+                                    <lable>
+                                        <input type='radio'
+                                               className=''
+                                               name={question._id}
+                                               disabled
+                                        />
+                                        {choice}
+                                        <i className="fas fa-check float-right" style={{color: '#5cb85c'}}/>
+                                    </lable>
+                                </li>
+                                }
+                                {answer !== question.correct && answer !== choice
+                                && choice !== question.correct &&
+                                <li className='list-group-item'>
+                                    <lable>
+                                        <input type='radio'
+                                               className=''
+                                               name={question._id}
+                                               disabled
+
+                                        />
+                                        {choice}
+                                    </lable>
+                                </li>
+                                }
                             </>
                         )
                     })
                 }
                 {
-                    !grade && question.choices.map((choice) => {
+                    !isGraded && question.choices.map((choice) => {
 
                         return (
                             <li className="list-group-item">
                                 <lable>
                                     <input type='radio'
                                            className=''
+                                           disabled={isGraded}
+
                                            onClick={() => {
-                                               setYourAnswer(choice)
+                                               setAnswer(choice)
+                                               setQuestionsWithAns((prev) =>
+                                                   prev.map((q) => {
+                                                           if (q._id === question._id) {
+                                                               return {...q, answer: choice}
+                                                           } else {
+                                                               return q
+                                                           }
+                                                       }
+                                                   ))
                                            }}
                                            name={question._id}/> {choice}
                                 </lable>
@@ -124,20 +139,20 @@ const MultipleChoiceQuestion = ({question}) => {
                 }
             </ul>
             <p>
-                Your answer: {yourAnswer}
+                Your answer: {answer}
             </p>
-            <button type="button"
-                    class="btn btn-success"
-                    onClick={() => {
-                        if (yourAnswer === '') {
-                            alert('Please choose an answer.')
-                        } else {
-                            setGrade(!grade)
-                        }
-                    }}
-            >
-                Grade
-            </button>
+            {/*<button type="button"*/}
+            {/*        class="btn btn-success"*/}
+            {/*        onClick={() => {*/}
+            {/*            if (yourAnswer === '') {*/}
+            {/*                alert('Please choose an answer.')*/}
+            {/*            } else {*/}
+            {/*                setGrade(!grade)*/}
+            {/*            }*/}
+            {/*        }}*/}
+            {/*>*/}
+            {/*    Grade*/}
+            {/*</button>*/}
             <hr/>
         </div>
     )

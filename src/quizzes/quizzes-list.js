@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {Link, useParams} from "react-router-dom";
 import {connect} from "react-redux";
-import quizActions from "../../actions/quiz-actions";
+import quizActions from "../actions/quiz-actions";
 
 const QuizzesList = ({quizzes,
                          findAllQuizzes
