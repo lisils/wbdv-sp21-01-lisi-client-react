@@ -5,6 +5,7 @@ const ParagraphWidget = ({widget, updateWidget, deleteWidget}) => {
     const [editing, setEditing] = useState(false)
     return(
         <>
+
             {
                 editing &&
                 <>
@@ -19,13 +20,13 @@ const ParagraphWidget = ({widget, updateWidget, deleteWidget}) => {
                         <option value={"IMAGE"}>IMAGE</option>
                     </select>
                     <br/>
-
                     <textarea value={widgetCache.text}
-                              onChange={(e)=>{
-                                  setWidgetCache(widgetCache=>({...widgetCache, text: e.target.value}))
-                              }}
-                              className="form-control"/>
+                           onChange={(e)=>{
+                               setWidgetCache(widgetCache=>({...widgetCache, text: e.target.value}))
+                           }}
+                           className="form-control"/>
                     <br/>
+
                     <i
                         onClick={() => {
                             updateWidget(widgetCache.id, widgetCache)
@@ -46,12 +47,13 @@ const ParagraphWidget = ({widget, updateWidget, deleteWidget}) => {
             {
                 !editing &&
                 <>
-                    <i onClick={() => setEditing(true)} className="fas fa-cog fa-2x float-right"/>
+                    <i onClick={() => setEditing(true)} className="fas fa-cog fa-2x float-right"></i>
                     <p>{widget.text}</p>
                 </>
             }
         </>
     )
 }
+
 
 export default ParagraphWidget

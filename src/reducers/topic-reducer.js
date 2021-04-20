@@ -17,7 +17,11 @@ const topicReducer = (state = initialState, action) => {
             return {
                 ...state,
                 topics: state.topics.filter(topic => {
-                    return topic._id !== action.deleteItem._id;
+                    if (topic._id !== action.deleteItem._id) {
+                        return true
+                    } else {
+                        return false
+                    }
                 })
             }
         case "UPDATE_TOPIC":

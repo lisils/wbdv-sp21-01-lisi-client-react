@@ -23,6 +23,8 @@ const reducer = combineReducers({
 
 const store = createStore(reducer)
 
+
+// const CourseEditor = ({props}) =>
 const CourseEditor = ({history}) => {
     const {courseId, moduleId} = useParams();
 
@@ -30,21 +32,32 @@ const CourseEditor = ({history}) => {
     return (
         <Provider store={store}>
             <CourseEditorNavbar/>
-            <div>
-                <br/>
-                <div className="row">
-                    <div className="col-3">
-                        <ModuleList/>
-                    </div>
-                    <div className="col-9">
-                        <LessonTabs/>
-                        <hr/>
-                        <TopicPills/>
-                        <hr/>
-                        <WidgetList/>
-                    </div>
-                </div>
+    <div>
+        <br/>
+        {/*<h2>*/}
+        {/*    <Link to="/courses/table">*/}
+        {/*        <i className="fas fa-arrow-left"></i>*/}
+        {/*    </Link>*/}
+        {/*    Course Editor*/}
+        {/*    <i onClick={() => history.goBack()} className="fas fa-times float-right" ></i>*/}
+        {/*    <Link to="">*/}
+        {/*        <i className="fas fa-home float-right"></i>*/}
+        {/*    </Link>*/}
+        {/*</h2>*/}
+        {/*<hr/>*/}
+        <div className="row">
+            <div className="col-3">
+                <ModuleList/>
             </div>
-        </Provider>)}
+            <div className="col-9">
+                <LessonTabs/>
+                <hr/>
+                <TopicPills/>
+                <hr/>
+                <WidgetList/>
+            </div>
+        </div>
+    </div>
+    </Provider>)}
 
 export default CourseEditor

@@ -21,7 +21,7 @@ const TopicPills = (
 
     useEffect(() => {
         if(moduleId !== "undefined" && typeof moduleId !== "undefined"
-            && lessonId !== "undefined" && typeof lessonId !== "undefined"
+        && lessonId !== "undefined" && typeof lessonId !== "undefined"
         ) {
             findTopicsForLesson(lessonId)
         } else {
@@ -37,6 +37,7 @@ const TopicPills = (
                         <li className={`nav-item ${topic._id === topicId ? 'active' : ''}`}>
                             <EditableItem
                                 active={topic._id === topicId}
+                                // to={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/topics/${topic._id}`}
                                 to={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/topics/${topic._id}`}
                                 item={topic}
                                 updateItem={updateTopic}

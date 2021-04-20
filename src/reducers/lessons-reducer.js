@@ -1,5 +1,9 @@
 const initialState = {
-    lessons: []
+    lessons: [
+        // {_id:"123", title: "Lesson 1"},
+        // {_id:"456", title: "Lesson 2"},
+        // {_id:"789", title: "Lesson 3"}
+    ]
 }
 
 const lessonReducer = (state=initialState, action) => {
@@ -21,7 +25,11 @@ const lessonReducer = (state=initialState, action) => {
             return {
                 ...state,
                 lessons: state.lessons.filter(lesson => {
-                    return lesson._id !== action.deleteItem._id;
+                    if (lesson._id !== action.deleteItem._id) {
+                        return true
+                    } else {
+                        return false
+                    }
                 })
             }
         case "UPDATE_LESSON":

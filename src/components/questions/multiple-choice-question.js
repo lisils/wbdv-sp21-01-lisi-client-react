@@ -14,11 +14,11 @@ const MultipleChoiceQuestion = ({question, isGraded, setQuestionsWithAns}) => {
                         {question.question}
                         {
                             question.correct === answer &&
-                            <i className="fas fa-check float-right" style={{color: '#5cb85c'}}/>
+                            <i className="fas fa-check float-right" style={{color: '#5cb85c'}}></i>
                         }
                         {
                             question.correct !== answer &&
-                            <i className="fas fa-times float-right" style={{color: '#d9534f'}}/>
+                            <i className="fas fa-times float-right" style={{color: '#d9534f'}}></i>
                         }
                     </>
                 }
@@ -45,7 +45,7 @@ const MultipleChoiceQuestion = ({question, isGraded, setQuestionsWithAns}) => {
                                                disabled
                                         />
                                         {choice}
-                                        <i className="fas fa-check float-right" style={{color: '#5cb85c'}}/>
+                                        <i className="fas fa-check float-right" style={{color: '#5cb85c'}}></i>
                                     </lable>
                                 </li>
                                 }
@@ -73,7 +73,7 @@ const MultipleChoiceQuestion = ({question, isGraded, setQuestionsWithAns}) => {
 
                                         />
                                         {choice}
-                                        <i className="fas fa-times float-right" style={{color: '#d9534f'}}/>
+                                        <i className="fas fa-times float-right" style={{color: '#d9534f'}}></i>
                                     </lable>
                                 </li>
                                 }
@@ -87,7 +87,7 @@ const MultipleChoiceQuestion = ({question, isGraded, setQuestionsWithAns}) => {
                                                disabled
                                         />
                                         {choice}
-                                        <i className="fas fa-check float-right" style={{color: '#5cb85c'}}/>
+                                        <i className="fas fa-check float-right" style={{color: '#5cb85c'}}></i>
                                     </lable>
                                 </li>
                                 }

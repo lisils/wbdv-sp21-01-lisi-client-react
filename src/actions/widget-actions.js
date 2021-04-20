@@ -25,19 +25,19 @@ export const deleteWidget = (dispatch, wid) => {
 export const updateWidget = (dispatch, wid, widget) => {
     widgetService.updateWidget(wid, widget)
         .then(status=>dispatch({
-            type: UPDATE_WIDGET,
-            updatedWidget: widget
-        }))
+        type: UPDATE_WIDGET,
+        updatedWidget: widget
+    }))
 }
 
 export const findWidgetsForTopic = (dispatch, tid) => {
     widgetService.findWidgetsForTopic(tid)
         .then(allWidgets => {
-            dispatch({
-                type: FIND_ALL_WIDGETS_FOR_TOPIC,
-                widgets: allWidgets
-            })
+        dispatch({
+            type: FIND_ALL_WIDGETS_FOR_TOPIC,
+            widgets: allWidgets
         })
+    })
 }
 
 export const widgetActions = {

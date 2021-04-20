@@ -10,9 +10,9 @@ class CourseManager extends React.Component {
     state = {
         courses: [],
         newCourse: {
-            title: "",
-            owner: "me",
-            lastModified:"6:45 PM"
+        title: "",
+        owner: "me",
+        lastModified:"6:45 PM"
         }
     }
 
@@ -38,6 +38,7 @@ class CourseManager extends React.Component {
         courseService.findAllCourses()
             .then(courses => this.setState({courses}))
 
+
     addCourse = (event) => {
         let courseToAdd = this.state.newCourse
         if (this.state.newCourse.title.trim() === "") {
@@ -51,12 +52,12 @@ class CourseManager extends React.Component {
         courseService.createCourse(courseToAdd)
             .then(course => this.setState(
                 (prevState) => ({
-                    ...prevState,
-                    courses: [
-                        ...prevState.courses,
-                        course
-                    ]
-                })))
+                ...prevState,
+                courses: [
+                    ...prevState.courses,
+                    course
+                ]
+            })))
         this.setState({newCourse: {title: "", owner: "me",
                 lastModified:new Date().toLocaleDateString()}})
         event.preventDefault()
@@ -70,25 +71,28 @@ class CourseManager extends React.Component {
                     let nextState = {}
                     nextState.courses =
                         prevState.
-                        courses
-                            .filter(course => course !== courseToDelete)
+                            courses
+                                .filter(course => course !== courseToDelete)
                     return nextState
                 })
             })
     }
 
+
     render() {
         return(
             <div>
+                {/*<h1>Course Manager</h1>*/}
+                {/*<button onClick={this.addCourse}>Add Course</button>*/}
                 <body className="bg-light">
                 <nav className="navbar row bg-primary sticky-top">
                     <div className="col-md-3">
                         <a href="/">
-                            <i className="fas fa-bars fa-2x " style={{color: 'white'}}/>
+                            <i className="fas fa-bars fa-2x " style={{color: 'white'}}></i>
                         </a>
-                        <label/>
-                        <label/>
-                        <label/>
+                        <label></label>
+                        <label></label>
+                        <label></label>
                         <label className="col-form-table  text-white h2">
                             Course Manager
                         </label>
@@ -106,12 +110,14 @@ class CourseManager extends React.Component {
                     </div>
                     <div className="col-md-3">
                         <a href="#">
-                            <i onClick={this.addCourse}
-                               className="fas fa-plus-circle fa-3x col-md-auto"
-                               style={{color: 'red'}}>
-                            </i>
+                        <i onClick={this.addCourse}
+                           className="fas fa-plus-circle fa-3x col-md-auto"
+                           style={{color: 'red'}}>
+                        </i>
                         </a>
+
                     </div>
+
                 </nav>
 
                 </body>
@@ -124,14 +130,29 @@ class CourseManager extends React.Component {
                 </Route>
 
                 <Route path="/courses/grid" exact={true}>
-                    <CourseGrid
-                        deleteCourse={this.deleteCourse}
-                        updateCourse={this.updateCourse}
-                        courses={this.state.courses}/>
+                <CourseGrid
+                    deleteCourse={this.deleteCourse}
+                    updateCourse={this.updateCourse}
+                    courses={this.state.courses}/>
                 </Route>
+
+                {/*<Route path={[*/}
+                {/*    "/courses/editor/:courseId",*/}
+                {/*    "/courses/editor/:courseId/:moduleId",*/}
+                {/*    "/courses/editor/:courseId/:moduleId/:lessonId"]}*/}
+                {/*       exact={true}*/}
+                {/*       render={(props) => <CourseEditor {...props}/>}>*/}
+                {/*</Route>*/}
+
+                {/*<a href="#">*/}
+                {/*    <i onClick={this.addCourse}*/}
+                {/*       className="fas fa-plus-circle fa-4x float-right"*/}
+                {/*       style={{color: 'red'}}></i>*/}
+                {/*</a>*/}
             </div>
         )
     }
 }
+
 
 export default CourseManager

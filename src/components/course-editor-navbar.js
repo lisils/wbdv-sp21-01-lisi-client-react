@@ -13,18 +13,27 @@ const CourseEditorNavbar = ({course, findCourseById}) => {
 
     return (
         <div>
+            <nav className="navbar row bg-primary sticky-top">
+                <div className="col-11">
+                    <h2>
+                        <Link to={`/courses/${layout}`}>
+                            <i className="fas fa-arrow-left" style={{color: 'white'}}></i>
+                        </Link>
+                        <label className="col-form-table  text-white h2">
+                            Course Editor: {course.title}
+                        </label>
+                    </h2>
+                </div>
+                <h2>
+                    {/*<i onClick={() => history.goBack()} className="fas fa-times float-right" ></i>*/}
+                    <Link to="">
+                        <i className="fas fa-home float-right" style={{color: 'red'}}></i>
+                    </Link>
+                </h2>
+                <hr/>
+            </nav>
             <br/>
-            <h2>
-                <Link to={`/courses/${layout}`}>
-                    <i className="fas fa-arrow-left"/>
-                </Link>
-                Course Editor: {course.title}
 
-                <Link to="">
-                    <i className="fas fa-home float-right"/>
-                </Link>
-            </h2>
-            <hr/>
         </div>
     )
 }
@@ -43,5 +52,6 @@ const dtpm = dispatch => ({
             }))
     }
 })
+
 
 export default connect(stpm, dtpm)(CourseEditorNavbar)

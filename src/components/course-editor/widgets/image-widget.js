@@ -7,10 +7,10 @@ const ImageWidget = ({widget, updateWidget, deleteWidget}) => {
     return (<div>
         {
             !editing &&
-            <>
-                <i onClick={() => setEditing(true)} className="fas fa-cog fa-2x float-right"></i>
-                <img width={widgetCache.width} height={widgetCache.height} src={widgetCache.src}/>
-            </>
+                <>
+                    <i onClick={() => setEditing(true)} className="fas fa-cog fa-2x float-right"></i>
+                    <img width={widgetCache.width} height={widgetCache.height} src={widgetCache.src}/>
+                </>
 
         }
         {
@@ -27,7 +27,7 @@ const ImageWidget = ({widget, updateWidget, deleteWidget}) => {
                 <input value={widgetCache.width}
                        className="form-control"
                        onChange={(e)=>{
-                           setWidgetCache(widgetCache=>({...widgetCache, width:e.target.value}))
+                       setWidgetCache(widgetCache=>({...widgetCache, width:e.target.value}))
                        }}
                 />
                 Image Height

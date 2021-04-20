@@ -24,10 +24,11 @@ const LessonTabs = (
     }, [findLessonsForModule, moduleId])
     return(
         <div>
-            <ul className="nav nav-tabs">
+            {/*<h2>Lessons</h2>*/}
+            <ul className="nav nav-pills">
                 {
                     lessons.map(lesson =>
-                        <li className="nav-item">
+                        <li className={`nav-item ${lesson._id === lessonId ? 'active' : ''}`}>
                             <EditableItem
                                 to={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lesson._id}`}
                                 item={lesson}
@@ -40,9 +41,13 @@ const LessonTabs = (
                     )
                 }
                 <li>
-                    <i onClick={() => createLessonForModule(moduleId)} className="fas fa-plus"/>
+                    <i onClick={() => createLessonForModule(moduleId)} className="fas fa-plus"></i>
                 </li>
             </ul>
+
+            <div>
+
+            </div>
 
         </div>)}
 

@@ -21,9 +21,13 @@ const moduleReducer = (state=initialStat, action) => {
         case "DELETE_MODULE":
 
             const newState1 = {
-                modules: state.modules.filter(module => {
-                    return module._id !== action.moduleToDelete._id;
-                })
+                    modules: state.modules.filter(module => {
+                        if (module._id === action.moduleToDelete._id) {
+                            return false;
+                        } else {
+                            return true;
+                        }
+                    })
             }
             return newState1
 

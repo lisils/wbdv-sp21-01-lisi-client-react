@@ -8,22 +8,22 @@ const TrueFalseQuestion = ({question, isGraded, setQuestionsWithAns}) => {
         <div>
             <h5>
                 {isGraded &&
-                <>
-                    {question.question}
-                    {
-                        question.correct === yourAnswer &&
-                        <i className="fas fa-check float-right" style={{color: '#5cb85c'}}/>
-                    }
-                    {
-                        question.correct !== yourAnswer &&
-                        <i className="fas fa-times float-right" style={{color: '#d9534f'}}/>
-                    }
-                </>
+                    <>
+                        {question.question}
+                        {
+                            question.correct === yourAnswer &&
+                            <i className="fas fa-check float-right" style={{color: '#5cb85c'}}></i>
+                        }
+                        {
+                            question.correct !== yourAnswer &&
+                            <i className="fas fa-times float-right" style={{color: '#d9534f'}}></i>
+                        }
+                    </>
                 }
                 {!isGraded &&
-                <>
-                    {question.question}
-                </>
+                    <>
+                        {question.question}
+                    </>
                 }
             </h5>
             <ul className="list-group">
@@ -38,13 +38,13 @@ const TrueFalseQuestion = ({question, isGraded, setQuestionsWithAns}) => {
                                        onClick={() => {
                                            setYourAnswer('true')
                                            setQuestionsWithAns((prev) =>
-                                               prev.map((q) => {
-                                                   if (q._id === question._id) {
-                                                       return {...q, answer: "true"}
-                                                   } else {
-                                                       return q
-                                                   }
-                                               }))
+                                           prev.map((q) => {
+                                               if (q._id === question._id) {
+                                                   return {...q, answer: "true"}
+                                               } else {
+                                                   return q
+                                               }
+                                           }))
                                        }}
                                        name={question._id}/> TRUE
                             </lable>
@@ -75,18 +75,18 @@ const TrueFalseQuestion = ({question, isGraded, setQuestionsWithAns}) => {
                     isGraded &&
                     <>
                         {yourAnswer === question.correct && yourAnswer === 'true' &&
-                        <li className='list-group-item list-group-item-success'>
-                            <lable>
-                                <input type='radio'
-                                       className=''
-                                       name={question._id}
-                                       checked
-                                       disabled
-                                />
-                                TRUE
-                                <i className="fas fa-check float-right" style={{color: '#5cb85c'}}/>
-                            </lable>
-                        </li>
+                            <li className='list-group-item list-group-item-success'>
+                                <lable>
+                                    <input type='radio'
+                                           className=''
+                                           name={question._id}
+                                           checked
+                                           disabled
+                                    />
+                                    TRUE
+                                    <i className="fas fa-check float-right" style={{color: '#5cb85c'}}></i>
+                                </lable>
+                            </li>
                         }
                         {yourAnswer === question.correct && yourAnswer === 'true' &&
                         <li className='list-group-item'>
@@ -124,25 +124,25 @@ const TrueFalseQuestion = ({question, isGraded, setQuestionsWithAns}) => {
                                        disabled
                                 />
                                 FALSE
-                                <i className="fas fa-check float-right" style={{color: '#5cb85c'}}/>
+                                <i className="fas fa-check float-right" style={{color: '#5cb85c'}}></i>
                             </lable>
                         </li>
                         }
 
                         {yourAnswer !== question.correct && yourAnswer === 'true'
-                        &&
-                        <li className='list-group-item list-group-item-danger'>
-                            <lable>
-                                <input type='radio'
-                                       className=''
-                                       name={question._id}
-                                       checked
-                                       disabled
-                                />
-                                TRUE
-                                <i className="fas fa-times float-right" style={{color: '#d9534f'}}></i>
-                            </lable>
-                        </li>
+                            &&
+                            <li className='list-group-item list-group-item-danger'>
+                                <lable>
+                                    <input type='radio'
+                                           className=''
+                                           name={question._id}
+                                           checked
+                                           disabled
+                                    />
+                                    TRUE
+                                    <i className="fas fa-times float-right" style={{color: '#d9534f'}}></i>
+                                </lable>
+                            </li>
                         }
                         {yourAnswer !== question.correct && yourAnswer === 'true'
                         &&
@@ -154,7 +154,7 @@ const TrueFalseQuestion = ({question, isGraded, setQuestionsWithAns}) => {
                                        disabled
                                 />
                                 FALSE
-                                <i className="fas fa-check float-right" style={{color: '#5cb85c'}}/>
+                                <i className="fas fa-check float-right" style={{color: '#5cb85c'}}></i>
                             </lable>
                         </li>
                         }
@@ -168,7 +168,7 @@ const TrueFalseQuestion = ({question, isGraded, setQuestionsWithAns}) => {
                                        disabled
                                 />
                                 TRUE
-                                <i className="fas fa-check float-right" style={{color: '#5cb85c'}}/>
+                                <i className="fas fa-check float-right" style={{color: '#5cb85c'}}></i>
                             </lable>
                         </li>
                         }
@@ -183,7 +183,7 @@ const TrueFalseQuestion = ({question, isGraded, setQuestionsWithAns}) => {
                                        disabled
                                 />
                                 FALSE
-                                <i className="fas fa-times float-right" style={{color: '#d9534f'}}/>
+                                <i className="fas fa-times float-right" style={{color: '#d9534f'}}></i>
                             </lable>
                         </li>
                         }

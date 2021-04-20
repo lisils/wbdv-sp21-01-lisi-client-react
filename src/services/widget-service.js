@@ -1,4 +1,5 @@
-const BASE_URL = "https://wbdv-server-java.herokuapp.com/api"
+// const BASE_URL = "https://wbdv-server-java.herokuapp.com/api"
+const BASE_URL = "http://localhost:8080/api"
 
 export const createWidget=(topicId, widget) =>
     fetch(`${BASE_URL}/topics/${topicId}/widgets`, {
@@ -23,6 +24,8 @@ export const updateWidget = (wid, widget) =>
             'content-type': 'application/json'
         }
     }).then(response => {response.json()})
+
+
 
 export const findWidgetsForTopic = (tid) =>
     fetch(`${BASE_URL}/topics/${tid}/widgets`).then(res => res.json())

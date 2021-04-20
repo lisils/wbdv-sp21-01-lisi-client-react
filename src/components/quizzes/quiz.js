@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import {useParams} from "react-router-dom";
 import Question from "../questions/question";
-import QuestionService from "../services/question-service";
-import QuizService from "../services/quiz-service";
+import QuestionService from "../../services/question-service";
+import QuizService from "../../services/quiz-service";
 
 const Quiz = () => {
     const {quizId} = useParams();
@@ -15,6 +15,15 @@ const Quiz = () => {
     const [attempts, setAttempts] = useState([]);
     const [showAttemptHistory, setShowAttemptHistory] = useState(false);
     const [attemptNum, setAttemptNum] = useState(0);
+
+    // //TODO: move this to a service file
+    // useEffect(() => {
+    //     fetch(`http://localhost:4000/api/quizzes/${quizId}/questions`)
+    //         .then(response => response.json())
+    //         .then((questions) => {
+    //             setQuestions(questions)
+    //         })
+    // }, [])
 
     useEffect(() => {
         QuestionService.findQuestionsForQuiz(quizId).then((questions) => {
@@ -35,21 +44,21 @@ const Quiz = () => {
             <ul className='list-group'>
                 {
                     questions.map((question) => {
-                        return (
-                            <li>
-                                <Question
-                                    question={question}
-                                    isGraded={isGraded}
-                                    setQuestionsWithAns={setQuestionsWithAns}
-                                />
-                            </li>
-                        )
-                    })
+                    return (
+                        <li>
+                            <Question
+                                question={question}
+                                isGraded={isGraded}
+                                setQuestionsWithAns={setQuestionsWithAns}
+                            />
+                        </li>
+                    )
+                })
                 }
                 <li className="list-group-item">
                     {
                         isGraded &&
-                        <span>Score: {curScore}</span>
+                            <span>Score: {curScore}</span>
                     }
                     <button
                         onClick={()=> {
@@ -83,7 +92,7 @@ const Quiz = () => {
                         // setAttemptNum(attemptNum + 1)
                         return (
                             <li className="list-group-item">
-                                Past Attempt Score: {attempt.score}
+                                 Past Attempt Score: {attempt.score}
                             </li>
                         )
                     })

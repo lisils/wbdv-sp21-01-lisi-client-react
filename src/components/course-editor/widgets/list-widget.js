@@ -9,6 +9,18 @@ const ListWidget = ({widget, updateWidget, deleteWidget}) => {
             {
                 editing &&
                 <>
+                    {/*<select value={widgetCache.type}*/}
+                    {/*        onChange={(e)=>{*/}
+                    {/*            setWidgetCache(widgetCache=>({...widgetCache, type:e.target.value}))*/}
+                    {/*        }}*/}
+                    {/*        className="form-control">*/}
+                    {/*    <option value={"HEADING"}>HEADING</option>*/}
+                    {/*    <option value={"PARAGRAPH"}>PARAGRAPH</option>*/}
+                    {/*    <option value={"LIST"}>LIST</option>*/}
+                    {/*    <option value={"IMAGE"}>IMAGE</option>*/}
+                    {/*</select>*/}
+                    {/*<br/>*/}
+
                     <input checked={widgetCache.ordered}
                            type="checkbox"
                            onChange={(e)=>{
@@ -24,6 +36,10 @@ const ListWidget = ({widget, updateWidget, deleteWidget}) => {
                               }}
                               className="form-control"/>
                     <br/>
+
+                    {/*<textarea value={widget.text} rows={10} className="form-control"></textarea>*/}
+                    {/*{JSON.stringify(widget)}*/}
+                    {/*{JSON.stringify(widgetCache)}*/}
 
                     <i
                         onClick={() => {
@@ -47,7 +63,7 @@ const ListWidget = ({widget, updateWidget, deleteWidget}) => {
             {
                 !editing &&
                 <>
-                    <i onClick={() => setEditing(true)} className="fas fa-cog fa-2x float-right"/>
+                    <i onClick={() => setEditing(true)} className="fas fa-cog fa-2x float-right"></i>
                     {
                         widgetCache.ordered &&
                         <>
